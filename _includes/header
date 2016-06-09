@@ -1,0 +1,7 @@
+  <section class="page-header">
+      <h1 class="project-name">Barry 的笔记本</h1>
+      <a href="/" class="extra project-tagline">主页</a>
+      <a href="/category.html" class="extra project-tagline">分类</a>
+      <a href="/about.html" class="extra project-tagline">关于我</a>
+  </section>
+

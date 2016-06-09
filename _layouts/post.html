@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygments.css" media="screen">    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.toc.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    $('#main_content').toc({
+        showAlways:true,
+        showText:'查看目录',
+        saveShowStatus:false
+    });
+    </script>
+  </head>
+  <body>
+  {% include header %}  
+  <article class="main-content">
+  <h1 style="font-size: 2em;color:#159957">{{ page.title }}</h1>
+  <p>分类：
+  <a href="/category/{{ page.categories }}.html" style="color:#1e6bb8">{{ page.categories }}</a> &nbsp;&nbsp;日期：{{ page.date | date_to_string }} 
+  </p> 
+    <article id="main_content">
+    {{ content}}  
+    </article>
+    <div class="clearfix"></div>
+    <ul class="pager">
+		  {% if page.previous %}
+		  <li class="previous">
+		    <a href="{{ site.BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; {{ page.previous.title }}</a>
+		  </li>
+		  {% else %}
+		  <li class="previous disabled"><a>&larr; 没有上一篇了</a></li>
+		  {% endif %}
+		  {% if page.next %}
+		  <li class="next">
+		    <a href="{{ site.BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">{{ page.next.title }} &rarr;</a>
+		  </li>
+		  {% else %}
+			<li class="next disabled"><a>没有下一篇了 &rarr;</a>
+		  {% endif %}
+	</ul>
+
+	<hr>
+    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}"></div>
+
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"barryblog"};
+	    (function() {
+		    var ds = document.createElement('script');
+		    ds.type = 'text/javascript';ds.async = true;
+		    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		    ds.charset = 'UTF-8';
+		    (document.getElementsByTagName('head')[0] 
+		    || document.getElementsByTagName('body')[0]).appendChild(ds);
+	    })();
+	</script>
+    <!-- 多说公共JS代码 end -->
+   </article>
+   <a id="back-to-top" onclick="$('html, body').animate({scrollTop: 0}, 600);"></a>
+   {% include footer %}
+  </body>
+</html>
+

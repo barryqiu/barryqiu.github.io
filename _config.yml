@@ -1,0 +1,6 @@
+encoding : utf-8
+markdown: kramdown
+# redcarpet:
+#     extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
+highlighter: rouge
+url: www.qiuxiaobing.cn

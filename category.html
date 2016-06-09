@@ -1,0 +1,17 @@
+---
+layout: default
+title: barryqiu的笔记本
+---    
+{% for category in site.categories %}
+<h3 class="entry-content"><a href="/category/{{ category | first }}.html">{{ category | first }} ({{ category | last | size }})</a></h3>
+<!-- <ul class="posts">    
+{% for post in category.last %}
+<li class="dot-li ">
+ <a href="{{ post.url }}">{{ post.title }}</a><span class="date">{{ post.date | date_to_string }} </span>
+</li>
+{% endfor %}
+</ul> -->
+{% endfor %}
+
+   
+
