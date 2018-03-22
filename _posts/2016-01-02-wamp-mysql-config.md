@@ -31,9 +31,10 @@ wamp安装之后默认的root密码是空，需要对它进行重新设置：
 * 输入“USE mysql;”然后回车，输入
 
 ```sql
-update user set password=“password”(‘这里是密码，如：root’) where user=’root’;”然后回车;返回信息：
-　　Query OK, 0 rows affected (0.00 sec)
-　　Rows matched: 2 Changed: 0 Warnings: 0
+update user set password=password('123456') where user='root'; 
+然后回车;返回信息：
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 2 Changed: 0 Warnings: 0
 ```
 
 * 重启mysql服务;
