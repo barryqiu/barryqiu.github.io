@@ -28,10 +28,9 @@ show variable like '%char%'
 wamp安装之后默认的root密码是空，需要对它进行重新设置：
 
 * 进入MYSQL控制台,提示输入密码，因为没有密码直接按回车键进入。
-* 输入“USE mysql;”然后回车，输入
 
 ```sql
-update user set password=password('123456') where user='root'; 
+update mysql.user set password=password('123456') where user='root'; 
 FLUSH PRIVILEGES;
 ```
 然后回车;返回信息：
