@@ -32,9 +32,17 @@ wamp安装之后默认的root密码是空，需要对它进行重新设置：
 
 ```sql
 update user set password=password('123456') where user='root'; 
+FLUSH PRIVILEGES;
+```
 然后回车;返回信息：
 Query OK, 0 rows affected (0.00 sec)
 Rows matched: 2 Changed: 0 Warnings: 0
+
+如果是5.7版本的mysql，原来user里的password字段已经变更为authentication_string,所以使用上述语句更新会提示“password 字段不存在，所以上述设置应该修改为：
+
+```
+UPDATE mysql.USER SET authentication_string = PASSWORD ('123456'), password_expired = 'N' WHERE USER = 'root';
+FLUSH PRIVILEGES;
 ```
 
 * 重启mysql服务;
