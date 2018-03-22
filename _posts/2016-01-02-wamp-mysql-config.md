@@ -27,26 +27,20 @@ show variable like '%char%'
 # 设置root密码
 wamp安装之后默认的root密码是空，需要对它进行重新设置：
 
-* 进入MYSQL控制台,提示输入密码，因为没有密码直接按回车键进入。
+* 进入MYSQL控制台,提示输入密码，因为没有密码直接按回车键进入，然后输入下面的命令
 
 ```sql
 update mysql.user set password=password('123456') where user='root'; 
 FLUSH PRIVILEGES;
 ```
-然后回车;返回信息：
-Query OK, 0 rows affected (0.00 sec)
-Rows matched: 2 Changed: 0 Warnings: 0
+然后回车;就会提示修改生效了
 
-如果是5.7版本的mysql，原来user里的password字段已经变更为authentication_string,所以使用上述语句更新会提示“password 字段不存在，所以上述设置应该修改为：
+* 如果是5.7版本的mysql，原来user里的password字段已经变更为authentication_string,所以使用上述语句更新会提示“password 字段不存在，所以上述命令应该修改为：
 
 ```
 UPDATE mysql.USER SET authentication_string = PASSWORD ('123456'), password_expired = 'N' WHERE USER = 'root';
 FLUSH PRIVILEGES;
 ```
-
-* 重启mysql服务;
-
-* 再次进入控制台时即可以输入新设置的密码了。
 
 这样mysql登录与密码是没问题了，但是使用phpmyadmin登录不了，找到phpmyadmin安装目录，一般是在wamp/apps/phpmyadmin/这个位置，打开config.inc.php，编辑如下几行：
 
